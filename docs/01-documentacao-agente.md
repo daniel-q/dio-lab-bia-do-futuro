@@ -4,18 +4,16 @@
 
 ### Problema
 > Qual problema financeiro seu agente resolve?
-
-[Sua descrição aqui]
+Muitas pessoas tem dificuldade de ajustar seus gastos para atingir metas financeiras
 
 ### Solução
 > Como o agente resolve esse problema de forma proativa?
-
-[Sua descrição aqui]
+Um assistente financeiro que a partir dos dados financeiros do usuario sugere maneiras de atingir a meta estabelecida
 
 ### Público-Alvo
 > Quem vai usar esse agente?
 
-[Sua descrição aqui]
+Pessoas sem muito conhecimento financeiro que desejam uma reserva financeira ou fazer uma compra grande.
 
 ---
 
