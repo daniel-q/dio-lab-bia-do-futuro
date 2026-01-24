@@ -48,7 +48,7 @@ Ele tera um tom formal
 
 ```mermaid
 flowchart TD
-    A[Cliente] -->|Mensagem| B[Interface]
+    A[Cliente] -->|Mensagem| B[Interface Visual]
     B --> C[LLM]
     C --> D[Base de Conhecimento]
     D --> C
@@ -60,10 +60,10 @@ flowchart TD
 
 | Componente | Descrição |
 |------------|-----------|
-| Interface | [ex: Chatbot em Streamlit] |
-| LLM | [ex: GPT-4 via API] |
-| Base de Conhecimento | [ex: JSON/CSV com dados do cliente] |
-| Validação | [ex: Checagem de alucinações] |
+| Interface | Streamlit |
+| LLM | Ollama |
+| Base de Conhecimento |  JSON/CSV com dados mockados |
+| Validação | Checagem de alucinações |
 
 ---
 
@@ -71,12 +71,12 @@ flowchart TD
 
 ### Estratégias Adotadas
 
-- [ ] [ex: Agente só responde com base nos dados fornecidos]
-- [ ] [ex: Respostas incluem fonte da informação]
-- [ ] [ex: Quando não sabe, admite e redireciona]
-- [ ] [ex: Não faz recomendações de investimento sem perfil do cliente]
+- [ ] Usa dados fornecidos no contexto e banco de dados para fazer o planejamento
+- [ ] Respostas incluem fonte da informação
+- [ ] Quando não sabe, admite e pede informação adicional quando cabivel
+- [ ] Tenta oferecer multiplas opções
 
 ### Limitações Declaradas
 > O que o agente NÃO faz?
 
-[Liste aqui as limitações explícitas do agente]
+Não pode fazer recomendar atos ilegais ou tratar de assuntos fora do contexto de planejamento financeiro.
