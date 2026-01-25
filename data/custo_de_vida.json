@@ -1,29 +1,1154 @@
 {
-  "Acre": 3200,
-  "Alagoas": 3000,
-  "Amapá": 3300,
-  "Amazonas": 3600,
-  "Bahia": 3400,
-  "Ceará": 3300,
-  "Distrito Federal": 4800,
-  "Espírito Santo": 3900,
-  "Goiás": 3500,
-  "Maranhão": 2900,
-  "Mato Grosso": 3600,
-  "Mato Grosso do Sul": 3500,
-  "Minas Gerais": 3600,
-  "Pará": 3300,
-  "Paraíba": 3000,
-  "Paraná": 4000,
-  "Pernambuco": 3500,
-  "Piauí": 2900,
-  "Rio de Janeiro": 5000,
-  "Rio Grande do Norte": 3200,
-  "Rio Grande do Sul": 3900,
-  "Rondônia": 3300,
-  "Roraima": 3400,
-  "Santa Catarina": 4200,
-  "São Paulo": 5200,
-  "Sergipe": 3000,
-  "Tocantins": 3200
+  "fonte": "Estimativas sintéticas para simulação e projetos acadêmicos",
+  "unidade": "Custo mensal em R$",
+  "premissas": {
+    "casal": "2 adultos",
+    "familia": "2 adultos + 2 crianças",
+    "capital_vs_interior": "Capitais ~30% mais caras que o interior"
+  },
+  "categorias": [
+    "moradia",
+    "alimentacao",
+    "transporte",
+    "saude",
+    "educacao",
+    "lazer",
+    "outros"
+  ],
+  "estados": {
+    "AC": {
+      "capital": {
+        "casal": {
+          "moradia": 2033,
+          "alimentacao": 1794,
+          "transporte": 478,
+          "saude": 478,
+          "educacao": 0,
+          "lazer": 478,
+          "outros": 358
+        },
+        "familia": {
+          "moradia": 2947,
+          "alimentacao": 2601,
+          "transporte": 693,
+          "saude": 693,
+          "educacao": 0,
+          "lazer": 693,
+          "outros": 519
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1564,
+          "alimentacao": 1380,
+          "transporte": 368,
+          "saude": 368,
+          "educacao": 0,
+          "lazer": 368,
+          "outros": 276
+        },
+        "familia": {
+          "moradia": 2267,
+          "alimentacao": 2001,
+          "transporte": 533,
+          "saude": 533,
+          "educacao": 0,
+          "lazer": 533,
+          "outros": 400
+        }
+      }
+    },
+    "AL": {
+      "capital": {
+        "casal": {
+          "moradia": 1878,
+          "alimentacao": 1657,
+          "transporte": 442,
+          "saude": 442,
+          "educacao": 0,
+          "lazer": 442,
+          "outros": 331
+        },
+        "familia": {
+          "moradia": 2723,
+          "alimentacao": 2402,
+          "transporte": 640,
+          "saude": 640,
+          "educacao": 0,
+          "lazer": 640,
+          "outros": 479
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1445,
+          "alimentacao": 1275,
+          "transporte": 340,
+          "saude": 340,
+          "educacao": 0,
+          "lazer": 340,
+          "outros": 255
+        },
+        "familia": {
+          "moradia": 2095,
+          "alimentacao": 1848,
+          "transporte": 493,
+          "saude": 493,
+          "educacao": 0,
+          "lazer": 493,
+          "outros": 369
+        }
+      }
+    },
+    "AP": {
+      "capital": {
+        "casal": {
+          "moradia": 2099,
+          "alimentacao": 1852,
+          "transporte": 494,
+          "saude": 494,
+          "educacao": 0,
+          "lazer": 494,
+          "outros": 370
+        },
+        "familia": {
+          "moradia": 3043,
+          "alimentacao": 2685,
+          "transporte": 716,
+          "saude": 716,
+          "educacao": 0,
+          "lazer": 716,
+          "outros": 536
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1615,
+          "alimentacao": 1425,
+          "transporte": 380,
+          "saude": 380,
+          "educacao": 0,
+          "lazer": 380,
+          "outros": 285
+        },
+        "familia": {
+          "moradia": 2341,
+          "alimentacao": 2066,
+          "transporte": 551,
+          "saude": 551,
+          "educacao": 0,
+          "lazer": 551,
+          "outros": 413
+        }
+      }
+    },
+    "AM": {
+      "capital": {
+        "casal": {
+          "moradia": 2143,
+          "alimentacao": 1891,
+          "transporte": 504,
+          "saude": 504,
+          "educacao": 0,
+          "lazer": 504,
+          "outros": 378
+        },
+        "familia": {
+          "moradia": 3107,
+          "alimentacao": 2741,
+          "transporte": 730,
+          "saude": 730,
+          "educacao": 0,
+          "lazer": 730,
+          "outros": 548
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1649,
+          "alimentacao": 1455,
+          "transporte": 388,
+          "saude": 388,
+          "educacao": 0,
+          "lazer": 388,
+          "outros": 291
+        },
+        "familia": {
+          "moradia": 2391,
+          "alimentacao": 2109,
+          "transporte": 562,
+          "saude": 562,
+          "educacao": 0,
+          "lazer": 562,
+          "outros": 421
+        }
+      }
+    },
+    "BA": {
+      "capital": {
+        "casal": {
+          "moradia": 1944,
+          "alimentacao": 1716,
+          "transporte": 457,
+          "saude": 457,
+          "educacao": 0,
+          "lazer": 457,
+          "outros": 343
+        },
+        "familia": {
+          "moradia": 2818,
+          "alimentacao": 2488,
+          "transporte": 662,
+          "saude": 662,
+          "educacao": 0,
+          "lazer": 662,
+          "outros": 497
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1496,
+          "alimentacao": 1320,
+          "transporte": 352,
+          "saude": 352,
+          "educacao": 0,
+          "lazer": 352,
+          "outros": 264
+        },
+        "familia": {
+          "moradia": 2169,
+          "alimentacao": 1914,
+          "transporte": 510,
+          "saude": 510,
+          "educacao": 0,
+          "lazer": 510,
+          "outros": 382
+        }
+      }
+    },
+    "CE": {
+      "capital": {
+        "casal": {
+          "moradia": 1900,
+          "alimentacao": 1677,
+          "transporte": 447,
+          "saude": 447,
+          "educacao": 0,
+          "lazer": 447,
+          "outros": 335
+        },
+        "familia": {
+          "moradia": 2755,
+          "alimentacao": 2431,
+          "transporte": 648,
+          "saude": 648,
+          "educacao": 0,
+          "lazer": 648,
+          "outros": 485
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1462,
+          "alimentacao": 1290,
+          "transporte": 344,
+          "saude": 344,
+          "educacao": 0,
+          "lazer": 344,
+          "outros": 258
+        },
+        "familia": {
+          "moradia": 2119,
+          "alimentacao": 1870,
+          "transporte": 498,
+          "saude": 498,
+          "educacao": 0,
+          "lazer": 498,
+          "outros": 374
+        }
+      }
+    },
+    "DF": {
+      "capital": {
+        "casal": {
+          "moradia": 2540,
+          "alimentacao": 2241,
+          "transporte": 596,
+          "saude": 596,
+          "educacao": 0,
+          "lazer": 596,
+          "outros": 448
+        },
+        "familia": {
+          "moradia": 3683,
+          "alimentacao": 3249,
+          "transporte": 864,
+          "saude": 864,
+          "educacao": 0,
+          "lazer": 864,
+          "outros": 649
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1954,
+          "alimentacao": 1724,
+          "transporte": 459,
+          "saude": 459,
+          "educacao": 0,
+          "lazer": 459,
+          "outros": 345
+        },
+        "familia": {
+          "moradia": 2833,
+          "alimentacao": 2499,
+          "transporte": 665,
+          "saude": 665,
+          "educacao": 0,
+          "lazer": 665,
+          "outros": 500
+        }
+      }
+    },
+    "ES": {
+      "capital": {
+        "casal": {
+          "moradia": 2165,
+          "alimentacao": 1911,
+          "transporte": 509,
+          "saude": 509,
+          "educacao": 0,
+          "lazer": 509,
+          "outros": 382
+        },
+        "familia": {
+          "moradia": 3139,
+          "alimentacao": 2770,
+          "transporte": 738,
+          "saude": 738,
+          "educacao": 0,
+          "lazer": 738,
+          "outros": 553
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1666,
+          "alimentacao": 1470,
+          "transporte": 392,
+          "saude": 392,
+          "educacao": 0,
+          "lazer": 392,
+          "outros": 294
+        },
+        "familia": {
+          "moradia": 2415,
+          "alimentacao": 2131,
+          "transporte": 568,
+          "saude": 568,
+          "educacao": 0,
+          "lazer": 568,
+          "outros": 426
+        }
+      }
+    },
+    "GO": {
+      "capital": {
+        "casal": {
+          "moradia": 2099,
+          "alimentacao": 1852,
+          "transporte": 494,
+          "saude": 494,
+          "educacao": 0,
+          "lazer": 494,
+          "outros": 370
+        },
+        "familia": {
+          "moradia": 3043,
+          "alimentacao": 2685,
+          "transporte": 716,
+          "saude": 716,
+          "educacao": 0,
+          "lazer": 716,
+          "outros": 536
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1615,
+          "alimentacao": 1425,
+          "transporte": 380,
+          "saude": 380,
+          "educacao": 0,
+          "lazer": 380,
+          "outros": 285
+        },
+        "familia": {
+          "moradia": 2341,
+          "alimentacao": 2066,
+          "transporte": 551,
+          "saude": 551,
+          "educacao": 0,
+          "lazer": 551,
+          "outros": 413
+        }
+      }
+    },
+    "MA": {
+      "capital": {
+        "casal": {
+          "moradia": 1812,
+          "alimentacao": 1599,
+          "transporte": 426,
+          "saude": 426,
+          "educacao": 0,
+          "lazer": 426,
+          "outros": 318
+        },
+        "familia": {
+          "moradia": 2627,
+          "alimentacao": 2318,
+          "transporte": 617,
+          "saude": 617,
+          "educacao": 0,
+          "lazer": 617,
+          "outros": 461
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1394,
+          "alimentacao": 1230,
+          "transporte": 328,
+          "saude": 328,
+          "educacao": 0,
+          "lazer": 328,
+          "outros": 245
+        },
+        "familia": {
+          "moradia": 2021,
+          "alimentacao": 1783,
+          "transporte": 475,
+          "saude": 475,
+          "educacao": 0,
+          "lazer": 475,
+          "outros": 355
+        }
+      }
+    },
+    "MT": {
+      "capital": {
+        "casal": {
+          "moradia": 2121,
+          "alimentacao": 1872,
+          "transporte": 499,
+          "saude": 499,
+          "educacao": 0,
+          "lazer": 499,
+          "outros": 374
+        },
+        "familia": {
+          "moradia": 3075,
+          "alimentacao": 2714,
+          "transporte": 723,
+          "saude": 723,
+          "educacao": 0,
+          "lazer": 723,
+          "outros": 542
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1632,
+          "alimentacao": 1440,
+          "transporte": 384,
+          "saude": 384,
+          "educacao": 0,
+          "lazer": 384,
+          "outros": 288
+        },
+        "familia": {
+          "moradia": 2366,
+          "alimentacao": 2088,
+          "transporte": 556,
+          "saude": 556,
+          "educacao": 0,
+          "lazer": 556,
+          "outros": 417
+        }
+      }
+    },
+    "MS": {
+      "capital": {
+        "casal": {
+          "moradia": 2077,
+          "alimentacao": 1833,
+          "transporte": 488,
+          "saude": 488,
+          "educacao": 0,
+          "lazer": 488,
+          "outros": 366
+        },
+        "familia": {
+          "moradia": 3011,
+          "alimentacao": 2657,
+          "transporte": 707,
+          "saude": 707,
+          "educacao": 0,
+          "lazer": 707,
+          "outros": 530
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1598,
+          "alimentacao": 1410,
+          "transporte": 376,
+          "saude": 376,
+          "educacao": 0,
+          "lazer": 376,
+          "outros": 282
+        },
+        "familia": {
+          "moradia": 2317,
+          "alimentacao": 2044,
+          "transporte": 545,
+          "saude": 545,
+          "educacao": 0,
+          "lazer": 545,
+          "outros": 408
+        }
+      }
+    },
+    "MG": {
+      "capital": {
+        "casal": {
+          "moradia": 2055,
+          "alimentacao": 1813,
+          "transporte": 483,
+          "saude": 483,
+          "educacao": 0,
+          "lazer": 483,
+          "outros": 362
+        },
+        "familia": {
+          "moradia": 2979,
+          "alimentacao": 2628,
+          "transporte": 700,
+          "saude": 700,
+          "educacao": 0,
+          "lazer": 700,
+          "outros": 524
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1581,
+          "alimentacao": 1395,
+          "transporte": 372,
+          "saude": 372,
+          "educacao": 0,
+          "lazer": 372,
+          "outros": 279
+        },
+        "familia": {
+          "moradia": 2292,
+          "alimentacao": 2022,
+          "transporte": 539,
+          "saude": 539,
+          "educacao": 0,
+          "lazer": 539,
+          "outros": 404
+        }
+      }
+    },
+    "PA": {
+      "capital": {
+        "casal": {
+          "moradia": 1989,
+          "alimentacao": 1755,
+          "transporte": 468,
+          "saude": 468,
+          "educacao": 0,
+          "lazer": 468,
+          "outros": 351
+        },
+        "familia": {
+          "moradia": 2884,
+          "alimentacao": 2544,
+          "transporte": 678,
+          "saude": 678,
+          "educacao": 0,
+          "lazer": 678,
+          "outros": 508
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1530,
+          "alimentacao": 1350,
+          "transporte": 360,
+          "saude": 360,
+          "educacao": 0,
+          "lazer": 360,
+          "outros": 270
+        },
+        "familia": {
+          "moradia": 2218,
+          "alimentacao": 1957,
+          "transporte": 522,
+          "saude": 522,
+          "educacao": 0,
+          "lazer": 522,
+          "outros": 391
+        }
+      }
+    },
+    "PB": {
+      "capital": {
+        "casal": {
+          "moradia": 1856,
+          "alimentacao": 1638,
+          "transporte": 436,
+          "saude": 436,
+          "educacao": 0,
+          "lazer": 436,
+          "outros": 327
+        },
+        "familia": {
+          "moradia": 2691,
+          "alimentacao": 2375,
+          "transporte": 632,
+          "saude": 632,
+          "educacao": 0,
+          "lazer": 632,
+          "outros": 474
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1428,
+          "alimentacao": 1260,
+          "transporte": 336,
+          "saude": 336,
+          "educacao": 0,
+          "lazer": 336,
+          "outros": 252
+        },
+        "familia": {
+          "moradia": 2070,
+          "alimentacao": 1827,
+          "transporte": 487,
+          "saude": 487,
+          "educacao": 0,
+          "lazer": 487,
+          "outros": 365
+        }
+      }
+    },
+    "PR": {
+      "capital": {
+        "casal": {
+          "moradia": 2254,
+          "alimentacao": 1989,
+          "transporte": 530,
+          "saude": 530,
+          "educacao": 0,
+          "lazer": 530,
+          "outros": 397
+        },
+        "familia": {
+          "moradia": 3268,
+          "alimentacao": 2884,
+          "transporte": 768,
+          "saude": 768,
+          "educacao": 0,
+          "lazer": 768,
+          "outros": 575
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1734,
+          "alimentacao": 1530,
+          "transporte": 408,
+          "saude": 408,
+          "educacao": 0,
+          "lazer": 408,
+          "outros": 306
+        },
+        "familia": {
+          "moradia": 2514,
+          "alimentacao": 2218,
+          "transporte": 591,
+          "saude": 591,
+          "educacao": 0,
+          "lazer": 591,
+          "outros": 443
+        }
+      }
+    },
+    "PE": {
+      "capital": {
+        "casal": {
+          "moradia": 1966,
+          "alimentacao": 1735,
+          "transporte": 462,
+          "saude": 462,
+          "educacao": 0,
+          "lazer": 462,
+          "outros": 347
+        },
+        "familia": {
+          "moradia": 2850,
+          "alimentacao": 2515,
+          "transporte": 669,
+          "saude": 669,
+          "educacao": 0,
+          "lazer": 669,
+          "outros": 503
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1513,
+          "alimentacao": 1335,
+          "transporte": 356,
+          "saude": 356,
+          "educacao": 0,
+          "lazer": 356,
+          "outros": 267
+        },
+        "familia": {
+          "moradia": 2193,
+          "alimentacao": 1935,
+          "transporte": 516,
+          "saude": 516,
+          "educacao": 0,
+          "lazer": 516,
+          "outros": 387
+        }
+      }
+    },
+    "PI": {
+      "capital": {
+        "casal": {
+          "moradia": 1834,
+          "alimentacao": 1618,
+          "transporte": 431,
+          "saude": 431,
+          "educacao": 0,
+          "lazer": 431,
+          "outros": 323
+        },
+        "familia": {
+          "moradia": 2659,
+          "alimentacao": 2346,
+          "transporte": 624,
+          "saude": 624,
+          "educacao": 0,
+          "lazer": 624,
+          "outros": 468
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1411,
+          "alimentacao": 1245,
+          "transporte": 332,
+          "saude": 332,
+          "educacao": 0,
+          "lazer": 332,
+          "outros": 249
+        },
+        "familia": {
+          "moradia": 2045,
+          "alimentacao": 1805,
+          "transporte": 481,
+          "saude": 481,
+          "educacao": 0,
+          "lazer": 481,
+          "outros": 361
+        }
+      }
+    },
+    "RJ": {
+      "capital": {
+        "casal": {
+          "moradia": 2431,
+          "alimentacao": 2145,
+          "transporte": 572,
+          "saude": 572,
+          "educacao": 0,
+          "lazer": 572,
+          "outros": 429
+        },
+        "familia": {
+          "moradia": 3524,
+          "alimentacao": 3110,
+          "transporte": 829,
+          "saude": 829,
+          "educacao": 0,
+          "lazer": 829,
+          "outros": 622
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1870,
+          "alimentacao": 1650,
+          "transporte": 440,
+          "saude": 440,
+          "educacao": 0,
+          "lazer": 440,
+          "outros": 330
+        },
+        "familia": {
+          "moradia": 2711,
+          "alimentacao": 2392,
+          "transporte": 638,
+          "saude": 638,
+          "educacao": 0,
+          "lazer": 638,
+          "outros": 478
+        }
+      }
+    },
+    "RN": {
+      "capital": {
+        "casal": {
+          "moradia": 1922,
+          "alimentacao": 1696,
+          "transporte": 452,
+          "saude": 452,
+          "educacao": 0,
+          "lazer": 452,
+          "outros": 339
+        },
+        "familia": {
+          "moradia": 2786,
+          "alimentacao": 2459,
+          "transporte": 655,
+          "saude": 655,
+          "educacao": 0,
+          "lazer": 655,
+          "outros": 491
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1479,
+          "alimentacao": 1305,
+          "transporte": 348,
+          "saude": 348,
+          "educacao": 0,
+          "lazer": 348,
+          "outros": 261
+        },
+        "familia": {
+          "moradia": 2144,
+          "alimentacao": 1892,
+          "transporte": 504,
+          "saude": 504,
+          "educacao": 0,
+          "lazer": 504,
+          "outros": 378
+        }
+      }
+    },
+    "RS": {
+      "capital": {
+        "casal": {
+          "moradia": 2276,
+          "alimentacao": 2008,
+          "transporte": 535,
+          "saude": 535,
+          "educacao": 0,
+          "lazer": 535,
+          "outros": 401
+        },
+        "familia": {
+          "moradia": 3300,
+          "alimentacao": 2911,
+          "transporte": 775,
+          "saude": 775,
+          "educacao": 0,
+          "lazer": 775,
+          "outros": 581
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1751,
+          "alimentacao": 1545,
+          "transporte": 412,
+          "saude": 412,
+          "educacao": 0,
+          "lazer": 412,
+          "outros": 309
+        },
+        "familia": {
+          "moradia": 2538,
+          "alimentacao": 2240,
+          "transporte": 597,
+          "saude": 597,
+          "educacao": 0,
+          "lazer": 597,
+          "outros": 448
+        }
+      }
+    },
+    "RO": {
+      "capital": {
+        "casal": {
+          "moradia": 2011,
+          "alimentacao": 1774,
+          "transporte": 473,
+          "saude": 473,
+          "educacao": 0,
+          "lazer": 473,
+          "outros": 354
+        },
+        "familia": {
+          "moradia": 2915,
+          "alimentacao": 2572,
+          "transporte": 685,
+          "saude": 685,
+          "educacao": 0,
+          "lazer": 685,
+          "outros": 513
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1547,
+          "alimentacao": 1365,
+          "transporte": 364,
+          "saude": 364,
+          "educacao": 0,
+          "lazer": 364,
+          "outros": 273
+        },
+        "familia": {
+          "moradia": 2243,
+          "alimentacao": 1979,
+          "transporte": 527,
+          "saude": 527,
+          "educacao": 0,
+          "lazer": 527,
+          "outros": 395
+        }
+      }
+    },
+    "RR": {
+      "capital": {
+        "casal": {
+          "moradia": 2121,
+          "alimentacao": 1872,
+          "transporte": 499,
+          "saude": 499,
+          "educacao": 0,
+          "lazer": 499,
+          "outros": 374
+        },
+        "familia": {
+          "moradia": 3075,
+          "alimentacao": 2714,
+          "transporte": 723,
+          "saude": 723,
+          "educacao": 0,
+          "lazer": 723,
+          "outros": 542
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1632,
+          "alimentacao": 1440,
+          "transporte": 384,
+          "saude": 384,
+          "educacao": 0,
+          "lazer": 384,
+          "outros": 288
+        },
+        "familia": {
+          "moradia": 2366,
+          "alimentacao": 2088,
+          "transporte": 556,
+          "saude": 556,
+          "educacao": 0,
+          "lazer": 556,
+          "outros": 417
+        }
+      }
+    },
+    "SC": {
+      "capital": {
+        "casal": {
+          "moradia": 2320,
+          "alimentacao": 2047,
+          "transporte": 546,
+          "saude": 546,
+          "educacao": 0,
+          "lazer": 546,
+          "outros": 409
+        },
+        "familia": {
+          "moradia": 3364,
+          "alimentacao": 2968,
+          "transporte": 791,
+          "saude": 791,
+          "educacao": 0,
+          "lazer": 791,
+          "outros": 593
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1785,
+          "alimentacao": 1575,
+          "transporte": 420,
+          "saude": 420,
+          "educacao": 0,
+          "lazer": 420,
+          "outros": 315
+        },
+        "familia": {
+          "moradia": 2588,
+          "alimentacao": 2283,
+          "transporte": 609,
+          "saude": 609,
+          "educacao": 0,
+          "lazer": 609,
+          "outros": 456
+        }
+      }
+    },
+    "SP": {
+      "capital": {
+        "casal": {
+          "moradia": 2386,
+          "alimentacao": 2106,
+          "transporte": 561,
+          "saude": 561,
+          "educacao": 0,
+          "lazer": 561,
+          "outros": 421
+        },
+        "familia": {
+          "moradia": 3459,
+          "alimentacao": 3053,
+          "transporte": 813,
+          "saude": 813,
+          "educacao": 0,
+          "lazer": 813,
+          "outros": 610
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1836,
+          "alimentacao": 1620,
+          "transporte": 432,
+          "saude": 432,
+          "educacao": 0,
+          "lazer": 432,
+          "outros": 324
+        },
+        "familia": {
+          "moradia": 2662,
+          "alimentacao": 2349,
+          "transporte": 626,
+          "saude": 626,
+          "educacao": 0,
+          "lazer": 626,
+          "outros": 469
+        }
+      }
+    },
+    "SE": {
+      "capital": {
+        "casal": {
+          "moradia": 1900,
+          "alimentacao": 1677,
+          "transporte": 447,
+          "saude": 447,
+          "educacao": 0,
+          "lazer": 447,
+          "outros": 335
+        },
+        "familia": {
+          "moradia": 2755,
+          "alimentacao": 2431,
+          "transporte": 648,
+          "saude": 648,
+          "educacao": 0,
+          "lazer": 648,
+          "outros": 485
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1462,
+          "alimentacao": 1290,
+          "transporte": 344,
+          "saude": 344,
+          "educacao": 0,
+          "lazer": 344,
+          "outros": 258
+        },
+        "familia": {
+          "moradia": 2119,
+          "alimentacao": 1870,
+          "transporte": 498,
+          "saude": 498,
+          "educacao": 0,
+          "lazer": 498,
+          "outros": 374
+        }
+      }
+    },
+    "TO": {
+      "capital": {
+        "casal": {
+          "moradia": 1944,
+          "alimentacao": 1716,
+          "transporte": 457,
+          "saude": 457,
+          "educacao": 0,
+          "lazer": 457,
+          "outros": 343
+        },
+        "familia": {
+          "moradia": 2818,
+          "alimentacao": 2488,
+          "transporte": 662,
+          "saude": 662,
+          "educacao": 0,
+          "lazer": 662,
+          "outros": 497
+        }
+      },
+      "interior": {
+        "casal": {
+          "moradia": 1496,
+          "alimentacao": 1320,
+          "transporte": 352,
+          "saude": 352,
+          "educacao": 0,
+          "lazer": 352,
+          "outros": 264
+        },
+        "familia": {
+          "moradia": 2169,
+          "alimentacao": 1914,
+          "transporte": 510,
+          "saude": 510,
+          "educacao": 0,
+          "lazer": 510,
+          "outros": 382
+        }
+      }
+    }
+  }
 }
