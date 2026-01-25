@@ -79,4 +79,4 @@ flowchart TD
 ### Limitações Declaradas
 > O que o agente NÃO faz?
 
-Não pode fazer recomendar atos ilegais ou tratar de assuntos fora do contexto de planejamento financeiro.
+Não pode fazer recomendar atos ilegais ou tratar de assuntos fora do contexto de planejamento financeiro. O agente assume que esta sendo utilizado no Brasil, caso esteja sendo utilizado fora do Brasil não será capaz de fazer considerações relacionadas ao custo de vida.
