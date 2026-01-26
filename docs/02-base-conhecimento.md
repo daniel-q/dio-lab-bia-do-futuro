@@ -29,6 +29,9 @@ Adicionado os dados mocados de custo de vida de diferentes estados
 ### Como os dados são carregados?
 > Descreva como seu agente acessa a base de conhecimento.
 
+
+Os dados serão carregados no prompt via código
+
 '''
 import pandas as pd
 import json
@@ -49,7 +52,7 @@ with open('data/custos_de_vida.json','r', encoding = 'utf-8') as f:
 ### Como os dados são usados no prompt?
 > Os dados vão no system prompt? São consultados dinamicamente?
 
-[Sua descrição aqui]
+Os custos de vida e produtos financeiro serão carregadas para todos e o histórico de atendimento, transações e perfil do cliente serão carregados individualmente para cada cliente
 
 ---
 
@@ -60,6 +63,9 @@ with open('data/custos_de_vida.json','r', encoding = 'utf-8') as f:
 ```
 Dados do Cliente:
 - Nome: João Silva
+- Estado: São Paulo
+- Status: Cadados
+- Filhos: 2
 - Perfil: Moderado
 - Saldo disponível: R$ 5.000
 
