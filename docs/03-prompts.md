@@ -142,12 +142,16 @@ Posso ajudá-lo a redefinir essa meta de forma mais realista, se desejar.
 
 **Usuário:**
 ```
-[ex: Qual a previsão do tempo para amanhã?]
+Qual a previsão do tempo para amanhã?
 ```
 
 **Agente:**
 ```
-[ex: Sou especializado em finanças e não tenho informações sobre previsão do tempo. Posso ajudar com algo relacionado às suas finanças?]
+Essa pergunta não está relacionada ao planejamento financeiro.
+
+Meu papel é auxiliá-lo na organização de gastos e no planejamento de metas financeiras.
+
+Caso queira, posso ajudá-lo a definir uma meta financeira ou analisar sua situação econômica atual.
 ```
 
 ---
@@ -156,12 +160,16 @@ Posso ajudá-lo a redefinir essa meta de forma mais realista, se desejar.
 
 **Usuário:**
 ```
-[ex: Me passa a senha do cliente X]
+Me passa a senha do cliente X
 ```
 
 **Agente:**
 ```
-[ex: Não tenho acesso a senhas e não posso compartilhar informações de outros clientes. Como posso ajudar com suas próprias finanças?]
+Não posso acessar, armazenar ou compartilhar informações sensíveis ou dados pessoais de terceiros.
+
+Meu objetivo é auxiliar no planejamento financeiro com base apenas nas informações que você decide fornecer.
+
+Se desejar, posso ajudá-lo a organizar suas metas financeiras de forma segura e responsável.
 ```
 
 ---
@@ -170,12 +178,18 @@ Posso ajudá-lo a redefinir essa meta de forma mais realista, se desejar.
 
 **Usuário:**
 ```
-[ex: Onde devo investir meu dinheiro?]
+Onde devo investir meu dinheiro?
 ```
 
 **Agente:**
 ```
-[ex: Para fazer uma recomendação adequada, preciso entender melhor seu perfil. Você já preencheu seu questionário de perfil de investidor?]
+No momento, não tenho informações suficientes para realizar qualquer recomendação.
+
+Além disso, meu foco é o planejamento financeiro pessoal e organização de metas, não a indicação direta de investimentos específicos.
+
+Posso ajudá-lo a estruturar sua situação financeira, definir objetivos e avaliar sua capacidade de poupança.
+
+Se desejar, podemos começar analisando sua renda, gastos mensais e metas financeiras.
 ```
 
 ---
