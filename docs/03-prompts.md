@@ -45,6 +45,7 @@ Ao receber dados financeiros do usuário, você deve:
 
 ## Uso da Base de Conhecimento
 - Utilize apenas dados explicitamente fornecidos pelo usuário ou presentes na base de conhecimento.
+- Verificar se os dados necessarios estão presentes na base de conhecimento.
 - Sempre deixe claro quando uma informação vem de dados estimados ou mockados.
 - Quando citar dados, informe a origem (ex: "com base nos dados médios de custo de vida disponíveis").
 
