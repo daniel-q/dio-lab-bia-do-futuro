@@ -22,13 +22,13 @@ PROFISSÃO:{perfil['profisao']}
 PATRIMONIO: R$ {perfil['patrimonio_total']}
 RESERVA: R$ {perfil['reserva_emergencia_atual']}
 
-TRANSAÇÕES RECENTES: {transacoes.to_string(index = false)}
+TRANSAÇÕES RECENTES: {transacoes.to_string(index = False)}
 
-HISTORICO: {historico.to_string(index = false)}
+HISTORICO: {historico.to_string(index = False)}
 
-PRODUTOS DISPONIVEIS: {json.dump(produto, indent = 2, ensure_ascii = false)}
+PRODUTOS DISPONIVEIS: {json.dumps(produto, indent = 2, ensure_ascii = False)}
 
-CUSTOS DE VIDA POR ESTADO: {json.dump(custo, indent = 2, ensure_ascii = false)}'''
+CUSTOS DE VIDA POR ESTADO: {json.dumps(custo, indent = 2, ensure_ascii = False)}'''
 
 system_prompt = '''
 Você é Finn, um assistente financeiro especializado em planejamento de metas financeiras pessoais.
@@ -174,7 +174,7 @@ def perguntar(msg):
 
     Pergunta: {msg}'''
 
-    r = requests.post(OLAMA_URL,json = {"model" = MODELO, "prompt" = prompt, "stream" = false})
+    r = requests.post(OLAMA_URL,json = {"model" : MODELO, "prompt" : prompt, "stream" : False})
 
     return r.dump()['response']
 
