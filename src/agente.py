@@ -1,17 +1,34 @@
 import pandas as pd 
 import json
+import requests
+from config import OLAMA_URL, MODELO 
 
 historico = pd.read_csv('data/historico_atendimento.csv') 
-historico = pd.read_csv('data/transacoes.csv')
+transacoes = pd.read_csv('data/transacoes.csv')
 
 with open('data/perfil_investidor.json','r', encoding = 'utf-8') as f: 
     perfil = json.load(f)
 
 with open('data/produtos_financeiros.json','r', encoding = 'utf-8') as f: 
-    perfil = json.load(f)
+    produto = json.load(f)
 
 with open('data/custos_de_vida.json','r', encoding = 'utf-8') as f: 
-    perfil = json.load(f) 
+    custo = json.load(f) 
+
+Contexto = f''' 
+CLIENTE: {perfil['nome']},  {perfil['idade']} anos, {perfil['estado_civil']}, {perfil['filhos']} filhos, {perfil['estado']}
+RENDA: {perfil['renda_mensal']}
+PROFISSÃO:{perfil['profisao']}
+PATRIMONIO: R$ {perfil['patrimonio_total']}
+RESERVA: R$ {perfil['reserva_emergencia_atual']}
+
+TRANSAÇÕES RECENTES: {transacoes.to_string(index = false)}
+
+HISTORICO: {historico.to_string(index = false)}
+
+PRODUTOS DISPONIVEIS: {json.dump(produto, indent = 2, ensure_ascii = false)}
+
+CUSTOS DE VIDA POR ESTADO: {json.dump(custo, indent = 2, ensure_ascii = false)}'''
 
 system_prompt = '''
 Você é Finn, um assistente financeiro especializado em planejamento de metas financeiras pessoais.
@@ -142,3 +159,23 @@ Posso ajudá-lo a estruturar sua situação financeira, definir objetivos e aval
 
 Se desejar, podemos começar analisando sua renda, gastos mensais e metas financeiras.
 ''' 
+
+def perguntar(msg):
+    prompt = f'''
+    {system_prompt}
+
+    Contexto do Usuario:
+
+    {Contexto}
+
+    Exemplos:
+
+    {exemplos}
+
+    Pergunta: {msg}'''
+
+    r = requests.post(OLAMA_URL,json = {"model" = MODELO, "prompt" = prompt, "stream" = false})
+
+    return r.dump()['response']
+
+    
