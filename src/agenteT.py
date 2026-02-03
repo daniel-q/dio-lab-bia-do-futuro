@@ -1,13 +1,7 @@
 import pandas as pd 
 import json
 import requests
-from google import genai
-from dotenv import load_dotenv
-
-load_dotenv()
-
-client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
-chat_session = client.chats.create(model="gemini-2.0-flash")
+from config import OLAMA_URL, MODELO 
 
 historico = pd.read_csv('data/historico_atendimento.csv') 
 transacoes = pd.read_csv('data/transacoes.csv')
@@ -166,7 +160,7 @@ Posso ajudá-lo a estruturar sua situação financeira, definir objetivos e aval
 Se desejar, podemos começar analisando sua renda, gastos mensais e metas financeiras.
 ''' 
 
-"def perguntar(msg):
+def perguntar(msg):
     prompt = f'''
     {system_prompt}
 
