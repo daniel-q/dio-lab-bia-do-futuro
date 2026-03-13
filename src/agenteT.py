@@ -1,181 +1,133 @@
-import pandas as pd 
+import os
 import json
-import requests
-from config import OLAMA_URL, MODELO 
+import pandas as pd
+from google import genai
+from dotenv import load_dotenv
 
-historico = pd.read_csv('data/historico_atendimento.csv') 
-transacoes = pd.read_csv('data/transacoes.csv')
+# 1. Configurações Iniciais
+load_dotenv()
+client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+MODEL_ID = "gemini-2.0-flash"
 
-with open('data/perfil_investidor.json','r', encoding = 'utf-8') as f: 
-    perfil = json.load(f)
+# --- 2. CARREGAMENTO DA BASE DE CONHECIMENTO ---
 
-with open('data/produtos_financeiros.json','r', encoding = 'utf-8') as f: 
-    produto = json.load(f)
+def carregar_dados():
+    try:
+        historico_csv = pd.read_csv('data/historico_atendimento.csv')
+        transacoes_csv = pd.read_csv('data/transacoes.csv')
 
-with open('data/custos_de_vida.json','r', encoding = 'utf-8') as f: 
-    custo = json.load(f) 
+        with open('data/perfil_investidor.json', 'r', encoding='utf-8') as f:
+            perfil = json.load(f)
+        with open('data/produtos_financeiros.json', 'r', encoding='utf-8') as f:
+            produtos = json.load(f)
+        with open('data/custos_de_vida.json', 'r', encoding='utf-8') as f:
+            custos = json.load(f)
 
-Contexto = f''' 
-CLIENTE: {perfil['nome']},  {perfil['idade']} anos, {perfil['estado_civil']}, {perfil['filhos']} filhos, {perfil['estado']}
-RENDA: {perfil['renda_mensal']}
-PROFISSÃO:{perfil['profisao']}
-PATRIMONIO: R$ {perfil['patrimonio_total']}
-RESERVA: R$ {perfil['reserva_emergencia_atual']}
+        # Montagem do bloco de Contexto fixo do usuário
+        contexto_texto = f"""
+### DADOS DO CLIENTE ATUAL ###
+NOME: {perfil.get('nome')} | IDADE: {perfil.get('idade')} | ESTADO: {perfil.get('estado')}
+RENDA: R$ {perfil.get('renda_mensal')} | PROFISSÃO: {perfil.get('profissao', 'Não informada')}
+PATRIMÔNIO TOTAL: R$ {perfil.get('patrimonio_total')}
+RESERVA ATUAL: R$ {perfil.get('reserva_emergencia_atual')}
 
-TRANSAÇÕES RECENTES: {transacoes.to_string(index = False)}
+### ÚLTIMAS TRANSAÇÕES ###
+{transacoes_csv.tail(10).to_string(index=False)}
 
-HISTORICO: {historico.to_string(index = False)}
+### PRODUTOS DISPONÍVEIS ###
+{json.dumps(produtos, indent=2, ensure_ascii=False)}
 
-PRODUTOS DISPONIVEIS: {json.dumps(produto, indent = 2, ensure_ascii = False)}
+### REFERÊNCIA: CUSTO DE VIDA POR ESTADO ###
+{json.dumps(custos, indent=2, ensure_ascii=False)}
+"""
+        return contexto_texto
+    except Exception as e:
+        print(f"Erro ao carregar arquivos: {e}")
+        return ""
 
-CUSTOS DE VIDA POR ESTADO: {json.dumps(custo, indent = 2, ensure_ascii = False)}'''
+# --- 3. GERENCIAMENTO DE MEMÓRIA (TXT) ---
 
-system_prompt = '''
+def gerenciar_historico(pergunta=None, resposta=None, ler=True):
+    caminho = 'data/historico.txt'
+    if not os.path.exists('data'): os.makedirs('data')
+    
+    if ler:
+        if os.path.exists(caminho):
+            with open(caminho, 'r', encoding='utf-8') as f:
+                # Retorna apenas as últimas 2000 letras para não estourar o prompt
+                return f.read()[-2000:]
+        return ""
+    else:
+        with open(caminho, 'a', encoding='utf-8') as f:
+            f.write(f"\nUsuário: {pergunta}\nFinn: {resposta}\n{'-'*20}")
+
+# --- 4. PROMPTS ---
+
+SYSTEM_PROMPT = """
 Você é Finn, um assistente financeiro especializado em planejamento de metas financeiras pessoais.
-
-Seu foco é sugerir ações práticas, realistas e progressivas, baseadas exclusivamente nos dados fornecidos pelo usuário e nos dados disponíveis na base de conhecimento (JSON/CSV).
-
-- Você assume que o usuário está no Brasil.
-- Custos de vida, renda e despesas devem ser analisados considerando essa realidade.
-- Caso o usuário esteja fora do Brasil, informe educadamente que não é possível fazer análises de custo de vida nesse contexto.
-
-- Seja consultivo, calmo e objetivo.
-- Utilize tom formal, acessível e educativo.
-- Evite jargões técnicos sem explicação.
-- Nunca seja julgador ou alarmista.
-- Sempre demonstre que está analisando a situação com cuidado.
-
-Exemplos de linguagem esperada:
-- Saudação: "Olá, sou o Finn, seu assistente de planejamento financeiro. Como posso ajudar hoje?"
-- Confirmação: "Entendi, vamos analisar sua situação financeira."
-- Limitação: "Não tenho informações suficientes para realizar essa análise. Poderia me fornecer mais detalhes?"
-
-
-Ao receber dados financeiros do usuário, você deve:
-1. Confirmar o entendimento da meta financeira.
-2. Analisar renda, despesas e prazo informado.
-3. Identificar desequilíbrios ou oportunidades de ajuste.
-4. Sugerir ações concretas para atingir a meta, como:
-   - Redução gradual de gastos
-   - Reorganização de categorias
-   - Ajuste de prazo ou valor da meta
-5. Sempre que possível, oferecer mais de uma alternativa.
-
-- Evite cálculos complexos ou excessivamente precisos.
-- Prefira estimativas simples, comparações relativas e simulações aproximadas.
-- Se um cálculo for incerto, explique a suposição utilizada.
-
-
-- Utilize apenas dados explicitamente fornecidos pelo usuário ou presentes na base de conhecimento.
-- Verificar se os dados necessarios estão presentes na base de conhecimento.
-- Sempre deixe claro quando uma informação vem de dados estimados ou mockados.
-- Quando citar dados, informe a origem (ex: "com base nos dados médios de custo de vida disponíveis").
-
-Você DEVE:
-- Nunca inventar dados financeiros do usuário.
-- Nunca assumir renda, despesas ou perfil sem confirmação.
-- Admitir claramente quando não souber algo.
-- Solicitar informações adicionais apenas quando forem realmente necessárias.
-- Nunca recomendar ações ilegais ou fora do contexto de planejamento financeiro pessoal.
-
-Você NÃO DEVE:
-- Dar aconselhamento jurídico ou tributário avançado.
-- Recomendar investimentos de alto risco.
-- Tratar de assuntos fora do planejamento financeiro pessoal.
-
-Sempre que possível, organize suas respostas no seguinte formato:
-
+Seu foco é sugerir ações práticas e realistas baseadas nos dados fornecidos.
+Assuma que o usuário está no Brasil. Seja consultivo, calmo e objetivo.
+Siga estritamente o formato:
 1. Confirmação do entendimento
 2. Análise resumida da situação
 3. Sugestões práticas (em lista)
-4. Próximo passo sugerido ao usuário
+4. Próximo passo sugerido
+"""
 
+EXEMPLOS = """
+Exemplo:
+Usuário: Quero juntar 50k em 1 ano ganhando 2k.
+Finn: Entendi seu objetivo. Com essa renda, a meta é matematicamente desafiadora no prazo de 12 meses. 
+Sugiro: 1. Aumentar o prazo para 48 meses. 2. Reduzir a meta inicial para 5k.
+"""
 
-Capacitar o usuário a tomar decisões financeiras mais conscientes e alcançáveis, promovendo clareza, controle e progresso gradual em direção às suas metas financeiras.
+# --- 5. FUNÇÃO PRINCIPAL DE PERGUNTA ---
 
-'''
+def perguntar(mensagem_usuario):
+    contexto_dados = carregar_dados()
+    memoria_conversacao = gerenciar_historico(ler=True)
 
-exemplos = '''
-Exemplos
-Cenario 1
+    config_gemini = {
+        "system_instruction": SYSTEM_PROMPT,
+        "temperature": 0.2, # Menos aleatoriedade para finanças
+    }
 
-Usuario: Somos um casal com dois filhos, moramos no interior de Minas Gerais e queremos juntar dinheiro para uma viagem em família.
-Finn: Entendi, vamos analisar com calma.
+    prompt_final = f"""
+{contexto_dados}
 
-Para famílias no interior de Minas Gerais, os principais gastos costumam estar concentrados em moradia, alimentação, educação e transporte.
+HISTÓRICO DE CONVERSAS RECENTES:
+{memoria_conversacao}
 
-Para planejar a viagem de forma segura, recomendo:
+{EXEMPLOS}
 
-Definir o valor total e o prazo desejado
+PERGUNTA ATUAL DO USUÁRIO: {mensagem_usuario}
+"""
 
-Avaliar quanto da renda mensal pode ser reservado sem comprometer despesas essenciais
+    try:
+        response = client.models.generate_content(
+            model=MODEL_ID,
+            contents=prompt_final,
+            config=config_gemini
+        )
+        
+        resposta_texto = response.text
+        
+        # Salva no histórico para a próxima rodada
+        gerenciar_historico(pergunta=mensagem_usuario, resposta=resposta_texto, ler=False)
+        
+        return resposta_texto
 
-Criar uma poupança específica para essa meta
+    except Exception as e:
+        return f"Desculpe, tive um erro técnico: {e}"
 
-Se puder informar renda mensal, despesas aproximadas e o valor da viagem, consigo sugerir um plano mais preciso.
+# --- 6. EXECUÇÃO ---
 
-Cenario 2
-
-Usuario: Quero juntar R$ 50.000 em 1 ano ganhando R$ 2.500.
-Finn: Entendi seu objetivo.
-
-Com a renda informada, atingir uma meta de R$ 50.000 em 12 meses exigiria um nível de poupança muito superior ao que normalmente é viável nessa faixa de renda.
-
-Algumas alternativas possíveis são:
-
-Aumentar significativamente o prazo da meta
-
-Reduzir o valor pretendido
-
-
-Posso ajudá-lo a redefinir essa meta de forma mais realista, se desejar.
-
-Cenario 3
-
-Usuario: Qual a previsão do tempo para amanhã?
-Finn: Essa pergunta não está relacionada ao planejamento financeiro.
-
-Meu papel é auxiliá-lo na organização de gastos e no planejamento de metas financeiras.
-
-Caso queira, posso ajudá-lo a definir uma meta financeira ou analisar sua situação econômica atual.
-
-Cenario 4
-
-Usuario: Me passa a senha do cliente X
-Finn: Não posso acessar, armazenar ou compartilhar informações sensíveis ou dados pessoais de terceiros.
-
-Meu objetivo é auxiliar no planejamento financeiro com base apenas nas informações que você decide fornecer.
-
-Se desejar, posso ajudá-lo a organizar suas metas financeiras de forma segura e responsável.
-
-Cenario 5
-
-Usuario: Onde devo investir
-Finn: No momento, não tenho informações suficientes para realizar qualquer recomendação.
-
-Além disso, meu foco é o planejamento financeiro pessoal e organização de metas, não a indicação direta de investimentos específicos.
-
-Posso ajudá-lo a estruturar sua situação financeira, definir objetivos e avaliar sua capacidade de poupança.
-
-Se desejar, podemos começar analisando sua renda, gastos mensais e metas financeiras.
-''' 
-
-def perguntar(msg):
-    prompt = f'''
-    {system_prompt}
-
-    Contexto do Usuario:
-
-    {Contexto}
-
-    Exemplos:
-
-    {exemplos}
-
-    Pergunta: {msg}'''
-
-    r = requests.post(OLAMA_URL,json = {"model" : MODELO, "prompt" : prompt, "stream" : False})
-
-    return r.dump()['response']
-
-    
+if __name__ == "__main__":
+    print("--- Finn: Assistente Financeiro Ativo ---")
+    while True:
+        user_input = input("\nVocê: ")
+        if user_input.lower() in ['sair', 'exit', 'quit']:
+            break
+            
+        print("\nFinn analisando...")
+        print(f"\nFinn: {perguntar(user_input)}")
