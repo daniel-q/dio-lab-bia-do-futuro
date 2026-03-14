@@ -167,6 +167,8 @@ Se desejar, podemos começar analisando sua renda, gastos mensais e metas financ
 ''' 
 
 "def perguntar(msg):
+
+    with open 
     prompt = f'''
     {system_prompt}
 

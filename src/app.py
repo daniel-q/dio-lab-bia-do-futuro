@@ -1,7 +1,7 @@
-from streamlit import st
-from agente import perguntar
+import streamlit as st
+from agenteT import perguntar
 
-if purgunta := st.chat_input("Digite a sua duvida..."):
-    st.chat_massage("user").write(pergunta)
+if pergunta := st.chat_input("Digite a sua duvida..."):
+    st.chat_message("user").write(pergunta)
     with st.spinner("..."):
-        st.chat_massage("assistant").write(perguntar(pergunta))
+        st.chat_message("assistant").write(perguntar(pergunta))
