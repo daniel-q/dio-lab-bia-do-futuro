@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 # 1. Configurações Iniciais
 load_dotenv()
 client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
-MODEL_ID = "gemini-2.0-flash"
+MODEL_ID = "gemini-2.5-flash"
 
 # --- 2. CARREGAMENTO DA BASE DE CONHECIMENTO ---
 
