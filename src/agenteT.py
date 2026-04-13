@@ -13,14 +13,14 @@ MODEL_ID = "gemini-2.5-flash"
 
 def carregar_dados():
     try:
-        historico_csv = pd.read_csv('data/historico_atendimento.csv')
-        transacoes_csv = pd.read_csv('data/transacoes.csv')
+        historico_csv = pd.read_csv('../data/historico_atendimento.csv')
+        transacoes_csv = pd.read_csv('../data/transacoes.csv')
 
-        with open('data/perfil_investidor.json', 'r', encoding='utf-8') as f:
+        with open('../data/perfil_investidor.json', 'r', encoding='utf-8') as f:
             perfil = json.load(f)
-        with open('data/produtos_financeiros.json', 'r', encoding='utf-8') as f:
+        with open('../data/produtos_financeiros.json', 'r', encoding='utf-8') as f:
             produtos = json.load(f)
-        with open('data/custos_de_vida.json', 'r', encoding='utf-8') as f:
+        with open('../data/custo_de_vida.json', 'r', encoding='utf-8') as f:
             custos = json.load(f)
 
         # Montagem do bloco de Contexto fixo do usuário
@@ -48,7 +48,7 @@ RESERVA ATUAL: R$ {perfil.get('reserva_emergencia_atual')}
 # --- 3. GERENCIAMENTO DE MEMÓRIA (TXT) ---
 
 def gerenciar_historico(pergunta=None, resposta=None, ler=True):
-    caminho = 'data/historico.txt'
+    caminho = '../data/historico.txt'
     if not os.path.exists('data'): os.makedirs('data')
     
     if ler:
