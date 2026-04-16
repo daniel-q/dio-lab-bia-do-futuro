@@ -52,8 +52,7 @@ flowchart TD
     B --> C[LLM]
     C --> D[Base de Conhecimento]
     D --> C
-    C --> E[Validação]
-    E --> F[Resposta]
+    C --> F[Resposta]
 ```
 
 ### Componentes
